@@ -85,4 +85,3 @@ button:active {
 .right-buttons:active {
     background-color: hsl(34, 87%, 49%);
 }
-/* need to change color for onclick event using pseudoclass */

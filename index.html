@@ -15,7 +15,7 @@
     <input type="text" id="display" readonly>
     
     <div class="row" id="row1">
-        <button class="top-buttons">CE</button>
+        <button class="top-buttons" onclick="clearEntry()">CE</button>
         <button class="top-buttons" onclick="clearAll()">C</button>
         <button class="top-buttons" onclick="percent()">%</button>
         <button class="right-buttons" onclick="operatorInput('÷')">÷</button>
@@ -45,7 +45,7 @@
     <div class="row" id="row5">
         <button onclick="toggleSign()">±</button>
         <button onclick="numberInput('0')">0</button>
-        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="addDecimal('.')">.</button>
         <button class="right-buttons" onclick="calculate()">=</button>
     </div>
 </div>
