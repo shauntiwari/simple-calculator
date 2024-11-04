@@ -1,7 +1,9 @@
 let currentInput = 0; //change these to const?
 let previousInput = 0;
 let calcResult = 0;
+let displayValue = '';
 let operator = '';
+const divByZeroMsg = 'Cannot divide by zero!';
 
 const display = document.getElementById("display");
 
@@ -13,10 +15,16 @@ function clearAll() {
 }
 
 function numberInput(char) {
+    if (display.value === divByZeroMsg) {
+        clearAll();
+    }
     display.value += char;
 }
 
 function operatorInput(char) {
+    if (display.value === divByZeroMsg) {
+        display.value = 0;
+    }
     previousInput = parseInt(display.value);
     operator = char;
     display.value = '';
@@ -26,7 +34,7 @@ function calculate() {
     currentInput = parseInt(display.value);
     
     if (currentInput === 0 && operator === '÷') {
-        calcResult = 'Cannot divide by zero!';
+        calcResult = divByZeroMsg;
     }
     else {
         calcResult = operate(previousInput, currentInput, operator);
