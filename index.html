@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
-    <title>Document</title>
+    <title>Simple Calculator</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     <div class="row" id="row1">
         <button class="top-buttons">CE</button>
         <button class="top-buttons" onclick="clearAll()">C</button>
-        <button class="top-buttons">%</button>
+        <button class="top-buttons" onclick="percent()">%</button>
         <button class="right-buttons" onclick="operatorInput('÷')">÷</button>
     </div>
     
@@ -43,7 +43,7 @@
     </div>
     
     <div class="row" id="row5">
-        <button>±</button>
+        <button onclick="toggleSign()">±</button>
         <button onclick="numberInput('0')">0</button>
         <button onclick="appendToDisplay('.')">.</button>
         <button class="right-buttons" onclick="calculate()">=</button>

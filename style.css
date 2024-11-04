@@ -5,6 +5,7 @@ body {
     justify-content: center;
     height: 900px;
     font-family: Verdana, sans-serif;
+    background-color: #f5f5f5;
 }
 
 #container {
@@ -16,7 +17,7 @@ body {
     height: 550px;
     margin: 5px;
     padding: 5px;
-    border: 2px solid;
+    border: 2px solid black;
     border-radius: 10px;
     background-color: black;
     color: white;
@@ -25,15 +26,16 @@ body {
 #display {
     display: flex;
     align-items: center;
+    text-align: right;
     background-color: black;
     color: white;
-    height: 60px;
+    height: 80px;
     width:375px;
     border: 1px solid white;
     border-radius: 5px;
     margin: 10px;
     padding: 5px;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .row {
@@ -56,12 +58,20 @@ button:hover {
     background-color: hsl(0, 0%, 15%);
 }
 
+button:active {
+    background-color: hsl(0, 0%, 10%);
+}
+
 .top-buttons {
     background-color: hwb(0 65% 35%)
 }
 
 .top-buttons:hover {
     background-color: hwb(0 65% 30%)
+}
+
+.top-buttons:active {
+    background-color: hwb(0 65% 25%)
 }
 
 .right-buttons {
@@ -72,4 +82,7 @@ button:hover {
     background-color: hsl(34, 87%, 54%);
 }
 
+.right-buttons:active {
+    background-color: hsl(34, 87%, 49%);
+}
 /* need to change color for onclick event using pseudoclass */

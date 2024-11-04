@@ -1,9 +1,10 @@
-let currentInput = 0; //change these to const?
+let currentInput = 0;
 let previousInput = 0;
 let calcResult = 0;
-let displayValue = '';
 let operator = '';
-const divByZeroMsg = 'Cannot divide by zero!';
+let shouldResetDisplay = false;
+let equalsJustPressed = false;
+const divByZeroMsg = "Div by zero error!";
 
 const display = document.getElementById("display");
 
@@ -15,29 +16,86 @@ function clearAll() {
 }
 
 function numberInput(char) {
-    if (display.value === divByZeroMsg) {
+    if (display.value === divByZeroMsg || isNaN(display.value)) {
         clearAll();
     }
-    display.value += char;
+
+    if (shouldResetDisplay) {
+        display.value = char;
+        shouldResetDisplay = false;
+    } else {
+        display.value += char;
+    }
 }
 
 function operatorInput(char) {
-    if (display.value === divByZeroMsg) {
+    if (display.value === divByZeroMsg || isNaN(display.value)) {
         display.value = 0;
     }
-    previousInput = parseInt(display.value);
+    
+    if (operator !== '' && !equalsJustPressed) {
+        calculate();
+    }
+    previousInput = parseFloat(display.value);
     operator = char;
+    shouldResetDisplay = true;
+    equalsJustPressed = false;
+}
+
+function toggleSign() {
+    display.value = (-1 * parseFloat(display.value)).toString();
+}
+
+function percent() {
+    display.value = (parseFloat(display.value) / 100).toString();
+}
+
+function addDecimal() {
+    if (display.value === divByZeroMsg || isNaN(display.value)) {
+        clearAll();
+    }
+
+    // If display should reset or is empty, start with "0."
+    if (shouldResetDisplay || display.value === '') {
+        display.value = "0.";
+        shouldResetDisplay = false;
+        return;
+    }
+
+    // Only add decimal if there isn't one already
+    if (!display.value.includes('.')) {
+        display.value += '.';
+    }
+}
+
+function clearEntry() {
     display.value = '';
+    shouldResetDisplay = false;
+
+    if (equalsJustPressed) {
+        clearAll();
+    }
 }
 
 function calculate() {
-    currentInput = parseInt(display.value);
+    equalsJustPressed = true;
+    currentInput = parseFloat(display.value);
     
     if (currentInput === 0 && operator === '÷') {
         calcResult = divByZeroMsg;
     }
     else {
         calcResult = operate(previousInput, currentInput, operator);
+    }
+    
+    if (typeof calcResult === 'number') {
+        let resultString = calcResult.toString();
+    
+        if (resultString.length > 13) {
+            let integerPart = Math.floor(Math.abs(calcResult)).toString();
+            let availableDecimals = 13 - integerPart.length - (calcResult < 0 ? 1 : 0);
+            calcResult = Number(calcResult.toFixed(availableDecimals));
+        }
     }
     
     display.value = calcResult;
@@ -47,16 +105,12 @@ function operate(num1, num2, oper) {
     switch (oper) {
         case '+':
             return add(num1, num2);
-            break;
         case '-':
             return subtract(num1, num2);
-            break;
         case 'x':
             return multiply(num1, num2);
-            break;
         case '÷':
             return divide(num1, num2);
-            break;      
     }
 }
 
