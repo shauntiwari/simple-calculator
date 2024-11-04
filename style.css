@@ -2,6 +2,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 900px;
     font-family: Verdana, sans-serif;
 }
 
@@ -22,11 +24,12 @@ body {
 
 #display {
     display: flex;
-    justify-content: end;
     align-items: center;
+    background-color: black;
+    color: white;
     height: 60px;
     width:375px;
-    border: 1px solid;
+    border: 1px solid white;
     border-radius: 5px;
     margin: 10px;
     padding: 5px;
@@ -68,3 +71,5 @@ button:hover {
 .right-buttons:hover {
     background-color: hsl(34, 87%, 54%);
 }
+
+/* need to change color for onclick event using pseudoclass */

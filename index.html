@@ -12,41 +12,41 @@
 <body>
     <div id="container">
     
-    <div id="display">DISPLAY</div>
+    <input type="text" id="display" readonly>
     
     <div class="row" id="row1">
-        <button class="top-buttons" id="clear-entry">CE</button>
-        <button class="top-buttons" id="clear-all">C</button>
-        <button class="top-buttons" id="percentage">%</button>
-        <button class="right-buttons" id="divide">÷</button>
+        <button class="top-buttons">CE</button>
+        <button class="top-buttons" onclick="clearAll()">C</button>
+        <button class="top-buttons">%</button>
+        <button class="right-buttons" onclick="operatorInput('÷')">÷</button>
     </div>
     
     <div class="row" id="row2">
-        <button id="seven">7</button>
-        <button id="eight">8</button>
-        <button id="nine">9</button>
-        <button class="right-buttons" id="multiply">x</button>
+        <button onclick="numberInput('7')">7</button>
+        <button onclick="numberInput('8')">8</button>
+        <button onclick="numberInput('9')">9</button>
+        <button class="right-buttons" onclick="operatorInput('x')">x</button>
     </div>
     
     <div class="row" id="row3">
-        <button id="four">4</button>
-        <button id="five">5</button>
-        <button id="six">6</button>
-        <button class="right-buttons" id="subtract">-</button>
+        <button onclick="numberInput('4')">4</button>
+        <button onclick="numberInput('5')">5</button>
+        <button onclick="numberInput('6')">6</button>
+        <button class="right-buttons" onclick="operatorInput('-')">-</button>
     </div>
     
     <div class="row" id="row4">
-        <button id="one">1</button>
-        <button id="two">2</button>
-        <button id="three">3</button>
-        <button class="right-buttons" id="add">+</button>
+        <button onclick="numberInput('1')">1</button>
+        <button onclick="numberInput('2')">2</button>
+        <button onclick="numberInput('3')">3</button>
+        <button class="right-buttons" onclick="operatorInput('+')">+</button>
     </div>
     
     <div class="row" id="row5">
-        <button id="sign">±</button>
-        <button id="zero">0</button>
-        <button id="decimal">.</button>
-        <button class="right-buttons" id="equals">=</button>
+        <button>±</button>
+        <button onclick="numberInput('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button class="right-buttons" onclick="calculate()">=</button>
     </div>
 </div>
 
